@@ -8,6 +8,7 @@ Malheureusement, elle n'est plus maintenue et ne fonctionne plus avec les derni�
 
 Il faut donc ce repo pour pouvoir l'utiliser :
 https://github.com/hlefe/ar_flutter_plugin_flutterflow
+
 Celui-ci est maintenu par un développeur qui a fait une copie du plugin et l'a adapté pour qu'il fonctionne avec les dernières versions de Flutter.
 
 ## Installation
