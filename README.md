@@ -28,6 +28,12 @@ minSdkVersion 24
 ```
 C'est à la ligne 48 dans mon code
 
+:warning: Pour ios, il faut modifier le fichier Podfile. Il faut remplacer la ligne suivante avec la version 13.0
+```bash
+platform :ios, '13.0'
+```
+
+
 ## Utilisation
 
 Il vous suffit ensuite de build l'app sur votre téléphone et de lancer l'application. Si votre téléphone scanne une surface, un repère devrait apparaitre.
