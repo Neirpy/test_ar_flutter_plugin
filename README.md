@@ -22,7 +22,7 @@ Pour installer le plugin, il faut taper la commande suivante dans le terminal :
 flutter pub add ar_flutter_plugin_flutterflow
 ```
 
-##Pour Android :
+## Pour Android :
 
 Il faut aussi modifier une ligne dans votre application Flutter. Dans le fichier android/app/build.gradle, il faut remplacer la ligne suivante dans le defaultConfig:
 ```bash
@@ -30,7 +30,7 @@ minSdkVersion 24
 ```
 C'est à la ligne 48 dans mon code
 
-##Pour iOS :
+## Pour iOS :
 
 :warning: Pour ios, il faut modifier le fichier Podfile. Il faut remplacer la ligne suivante avec la version 13.0
 ```bash
