@@ -40,21 +40,21 @@ class _ObjectGesturesWidgetState extends State<ObjectGesturesWidget> {
         ),
         body: Container(
             child: Stack(children: [
-          ARView(
-            onARViewCreated: onARViewCreated,
-            planeDetectionConfig: PlaneDetectionConfig.horizontalAndVertical,
-          ),
-          Align(
-            alignment: FractionalOffset.bottomCenter,
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                      onPressed: onRemoveEverything,
-                      child: const Text("Remove Everything")),
-                ]),
-          )
-        ])));
+              ARView(
+                onARViewCreated: onARViewCreated,
+                planeDetectionConfig: PlaneDetectionConfig.horizontalAndVertical,
+              ),
+              Align(
+                alignment: FractionalOffset.bottomCenter,
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                          onPressed: onRemoveEverything,
+                          child: const Text("Remove Everything")),
+                    ]),
+              )
+            ])));
   }
 
   void onARViewCreated(
@@ -67,13 +67,13 @@ class _ObjectGesturesWidgetState extends State<ObjectGesturesWidget> {
     this.arAnchorManager = arAnchorManager;
 
     this.arSessionManager!.onInitialize(
-          showFeaturePoints: false,
-          showPlanes: true,
-          customPlaneTexturePath: "Images/triangle.png",
-          showWorldOrigin: true,
-          handlePans: true,
-          handleRotation: true,
-        );
+      showFeaturePoints: false,
+      showPlanes: true,
+      customPlaneTexturePath: "Images/triangle.png",
+      showWorldOrigin: true,
+      handlePans: true,
+      handleRotation: true,
+    );
     this.arObjectManager!.onInitialize();
 
     this.arSessionManager!.onPlaneOrPointTap = onPlaneOrPointTapped;
@@ -98,9 +98,9 @@ class _ObjectGesturesWidgetState extends State<ObjectGesturesWidget> {
   Future<void> onPlaneOrPointTapped(
       List<ARHitTestResult> hitTestResults) async {
     var singleHitTestResult = hitTestResults.firstWhere(
-        (hitTestResult) => hitTestResult.type == ARHitTestResultType.plane);
+            (hitTestResult) => hitTestResult.type == ARHitTestResultType.plane);
     var newAnchor =
-        ARPlaneAnchor(transformation: singleHitTestResult.worldTransform);
+    ARPlaneAnchor(transformation: singleHitTestResult.worldTransform);
     bool? didAddAnchor = await arAnchorManager!.addAnchor(newAnchor);
     if (didAddAnchor!) {
       anchors.add(newAnchor);
@@ -113,7 +113,7 @@ class _ObjectGesturesWidgetState extends State<ObjectGesturesWidget> {
           position: Vector3(0, 0, 0),
           rotation: Vector4(0, 1, 0, 0));
       bool? didAddNodeToAnchor =
-          await arObjectManager!.addNode(newNode, planeAnchor: newAnchor);
+      await arObjectManager!.addNode(newNode, planeAnchor: newAnchor);
       if (didAddNodeToAnchor!) {
         nodes.add(newNode);
       } else {
@@ -122,7 +122,7 @@ class _ObjectGesturesWidgetState extends State<ObjectGesturesWidget> {
     } else {
       arSessionManager!.onError!("Adding Anchor failed");
     }
-    }
+  }
 
   onPanStarted(String nodeName) {
     print("Started panning node $nodeName");
@@ -135,7 +135,7 @@ class _ObjectGesturesWidgetState extends State<ObjectGesturesWidget> {
   onPanEnded(String nodeName, Matrix4 newTransform) {
     print("Ended panning node $nodeName");
     final pannedNode =
-        nodes.firstWhere((element) => element.name == nodeName);
+    nodes.firstWhere((element) => element.name == nodeName);
 
     /*
     * Uncomment the following command if you want to keep the transformations of the Flutter representations of the nodes up to date
@@ -155,7 +155,7 @@ class _ObjectGesturesWidgetState extends State<ObjectGesturesWidget> {
   onRotationEnded(String nodeName, Matrix4 newTransform) {
     print("Ended rotating node $nodeName");
     final rotatedNode =
-        nodes.firstWhere((element) => element.name == nodeName);
+    nodes.firstWhere((element) => element.name == nodeName);
 
     /*
     * Uncomment the following command if you want to keep the transformations of the Flutter representations of the nodes up to date
